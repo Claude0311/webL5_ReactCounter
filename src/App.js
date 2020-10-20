@@ -8,9 +8,7 @@ class App extends React.Component{
     this.state = { count:100 }; // initialize 
   }
   handleClick = (inc)=>{
-    let {count} = this.state
-    count += inc;
-    this.setState({count})
+    this.setState(({count})=>({count:count+inc}))
   }
   render(){
     return (
