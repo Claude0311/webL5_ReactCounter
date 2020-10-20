@@ -2,25 +2,33 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+  constructor(props) { 
+    super(props); 
+    this.state = { count:100 }; // initialize 
+  }
+  handleClick = (inc)=>{
+    let {count} = this.state
+    count += inc;
+    this.setState({count})
+  }
+  render(){
+    return (
+      <div className="App">
+        <div className="App-display">
+          {this.state.count}
+        </div>
+        <span className="App-controls">
+          <button onClick={()=>this.handleClick(1)}>
+            +
+          </button>
+          <button onClick={()=>this.handleClick(-1)}>
+            -
+          </button>
+        </span>
+      </div>
+    );
+  }
 }
 
 export default App;
